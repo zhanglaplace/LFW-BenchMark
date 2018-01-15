@@ -1,6 +1,7 @@
 folder = 'E:\datasets\YTF\YouTubeFaces\aligned_images_DB';
 addpath('..');
-image_list = get_image_list_in_folder(folder);
+%image_list = get_image_list_in_folder(folder);
+load image_list.mat
 target_folder = 'E:\datasets\YTF\YouTubeFaces\aligned_images_DB2';
 if exist(target_folder, 'dir')==0
     mkdir(target_folder);
@@ -9,7 +10,7 @@ end;
 pdollar_toolbox_path='E:/programs/ZF/sphereface/tools/toolbox';
 addpath(genpath(pdollar_toolbox_path));
 
-MTCNN_path = 'E:/programs/ZF/sphereface/MTCNN_face_detection_alignment/code/codes/MTCNNv1';
+MTCNN_path = 'E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1';
 caffe_model_path=[MTCNN_path , '/model'];
 addpath(genpath(MTCNN_path));
 
@@ -33,11 +34,11 @@ minsize = 20;%80;
 factor=0.85;%0.709;
 
 %load caffe models
-PNet = caffe.Net('D:/programs/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det1.prototxt','D:/programs/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det1.caffemodel', 'test');
-RNet = caffe.Net('D:/programs/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det2.prototxt', ...
-                 'D:/programs/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det2.caffemodel', 'test');
-ONet = caffe.Net('D:/programs/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det3.prototxt', ...
-                 'D:/programs/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det3.caffemodel', 'test');
+PNet = caffe.Net('E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det1.prototxt','E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det1.caffemodel', 'test');
+RNet = caffe.Net('E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det2.prototxt', ...
+                 'E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det2.caffemodel', 'test');
+ONet = caffe.Net('E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det3.prototxt', ...
+                 'E:/programs/ZF/sphereface/tools/MTCNN_face_detection_alignment/code/codes/MTCNNv1/model/det3.caffemodel', 'test');
 faces=cell(0);	
 
 for image_id = 1:length(image_list);
@@ -54,7 +55,7 @@ for image_id = 1:length(image_list);
         mkdir(file_folder);
     end;
     disp([num2str(image_id) '/' num2str(length(image_list)) ' ' target_filename]);
-    [boundingboxes, points] = detect_face(img, minSize, PNet, RNet, ONet, threshold, false, factor);
+    [boundingboxes, points] = detect_face(img, minsize, PNet, RNet, ONet, threshold, false, factor);
 
     if isempty(boundingboxes)
         continue;

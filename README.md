@@ -3,38 +3,41 @@ Datasets evaluate
 
 ### Face Verification
 
--	CASIA-WebFace
+-	[x] CASIA-WebFace
 
--	LFW
+-	[x] LFW
 
--	MS-Celeb-1M
+-	[ ] MS-Celeb-1M
 
--	VGGFace2
+-	[x] VGGFace2(Half)
 
--	YTF
+-	[x] YTF
 
--	MegaFace
+-	[ ] MegaFace
  
 ### Face Expression
 
--	AFFECTNET
+-	[x] AFFECTNET
 
--	CK+
+-	[ ] CK+
 
--	FER
+-	[x] FER
 
--	FER-PLUS
+-	[ ] FER-PLUS
 
--	SFEW_2
+-	[x] SFEW_2 (Half)
 
--	JAF
+-	[x] JAF
 
--	KDEF
+-	[ ] KDEF
 
--	Oulu-CASIA
+-	[x] Oulu-CASIA
 
-
+-	[x] WSEFEP_HQ_042017
 
  
  then run lfw_eval.m 
+ 
+### FaceDetect
+   MTCNN v1  [0.6 0.7 0.9 ] ===> [0.6 0.7 0.7] ===> [0.5 0.6.0.6] minSize:20  factory:0.85
  

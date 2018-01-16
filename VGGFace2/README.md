@@ -1,7 +1,11 @@
-YouTubeFace
+VGGFace2
 ===============
 
-3425 videos of 1595 different people .
+3311289 images
+
+train: 31418921   8631 个体
+
+test： 169397     500 个体.
 
 
-total : 621126 images ..  after align 620783 
+ 

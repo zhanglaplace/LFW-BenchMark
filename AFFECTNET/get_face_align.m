@@ -10,8 +10,13 @@ function get_face_align()
                 51.6963, 51.5014, 71.7366, 92.3655, 92.2041];
     imgSize = [112, 96];
     
+<<<<<<< Updated upstream
     csv_fid = fopen(valid_csv,'r');
     total_num = 5500;%%414800;
+=======
+    csv_fid = fopen(train_csv,'r');
+    total_num = 414800; % 5500 validation
+>>>>>>> Stashed changes
     tmp_line = fgetl(csv_fid); %% 第一行不要
     image_id = 0;
     while ~feof(csv_fid)
@@ -25,6 +30,7 @@ function get_face_align()
              continue
          end
          
+          
          %% 只需要7种表情
          if str2num(C{1,7}) >= 7
              continue;

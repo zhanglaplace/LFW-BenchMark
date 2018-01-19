@@ -60,6 +60,8 @@ function get_image_MS_1m()
     faces = cell(0);	
 
     
+    
+    
     %% 循环处理每张图片
     for image_id = 1:length(image_list)
         img = imread(image_list{image_id});
@@ -127,7 +129,7 @@ function get_image_MS_1m()
             end
             
             %%% mtcnn 检测的不好，那就用json文件的内容来对齐
-            if force_detect
+            if 	force_detect
                 roi = coarse_box;
                 roi(3) = coarse_box(4) / imgSize(1) * imgSize(2);
                 roi(1) = coarse_box(1) + (coarse_box(3) - roi(3)) / 2;
@@ -151,7 +153,11 @@ function get_image_MS_1m()
         else
             % mtcnn也gg啦
             if isempty(boundingboxes)
-                fprintf(noface_fid,[ image_list{image_id}  'Not Detect file']); 
+                try
+                    fprintf(noface_fid,[ image_list{image_id}  'Not Detect file']); 
+                catch
+                    disp(image_list{image_id});
+                end
                 continue;
             end;
             if size(boundingboxes,1) > 1
